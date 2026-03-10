@@ -1,0 +1,153 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Create Account</title>
+ 
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+.flash-messages p {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 8px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+
+body {
+  background: url("{{ url_for('static', filename='img4.avif') }}")
+              no-repeat center center/cover;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  
+  padding: 40px 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 400px;
+  margin-top: -100px;
+  height: auto;
+   background: rgba(255, 255, 255, 0.2);  /* transparent white */
+  backdrop-filter: blur(10px);           /* blur effect */
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.form-box h2 {
+  text-align: center;
+  margin-bottom: 24px;
+  font-weight: bold;
+  color: #000;
+}
+
+.form-box form {
+  display: flex;
+  flex-direction: column;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  margin: 15px 0;
+  font-size: 14px;
+}
+
+.checkbox-container input {
+  margin-right: 10px;
+}
+
+.checkbox-container a {
+  color: #007BFF;
+  text-decoration: none;
+}
+
+.btn {
+  padding: 12px;
+  background: linear-gradient(to right, #74ebd5, #9face6);
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.login-text {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.login-text a {
+  color: #000;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+  </style>
+</head>
+  <body >
+
+  
+ 
+  <div class="container">
+    <div class="form-box">
+      <h2>CREATE   &nbsp;ACCOUNT</h2> 
+      <form method="POST" action="/register">
+       <select name="role" required style="border-radius: 6px; height: 40px;">
+    <option value="">Register as</option>
+    <option value="farmer">Farmer</option>
+    <option value="buyer">Buyer</option>
+</select>
+<br>
+
+  <input type="text" name="name" placeholder="Name" required />
+  <input type="email" name="email" placeholder="Your Email" autocomplete="off"   required />
+  <input type="password" name="password" placeholder="Password"  autocomplete="off" />
+  <input type="password" name="confirm_password" placeholder="Confirm Password" required />
+
+  <div class="checkbox-container">
+    <input type="checkbox" name="terms" id="terms" required />
+    <label for="terms">I agree to Terms of Service</label>
+  </div>
+
+  <button type="submit" class="btn"><b>SIGN UP</b></button>
+</form>
+
+      </form>
+      <p class="login-text">Have already an account ? <a href="/login">Login here</a></p>
+    </div>
+  </div>
+</body>
+</html>

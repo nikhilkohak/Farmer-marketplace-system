@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Crop Price</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 40px auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #2c3e50;
+        }
+
+        form {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 25px;
+        }
+
+        input[type="text"] {
+            width: 60%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px 0 0 5px;
+            outline: none;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #27ae60;
+            color: white;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #219150;
+        }
+
+        /* TABLE STYLE WITH BORDER */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            border: 2px solid #333;
+        }
+
+        table th, table td {
+            border: 1px solid #333;
+            padding: 10px;
+            text-align: center;
+        }
+
+        table th {
+            background-color: #27ae60;
+            color: white;
+        }
+
+        table tr:hover {
+            background-color: #f1f1f1;
+        }
+.logout-container {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.logout-btn {
+    display: inline-block;
+    padding: 10px 25px;
+    background-color: #e74c3c;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.logout-btn:hover {
+    background-color: #c0392b;
+}
+
+        .no-result {
+            text-align: center;
+            color: #888;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>🌾 Search Crop Price</h2>
+
+    <form method="POST">
+        <input type="text" name="crop_name" placeholder="Enter Crop Name" required>
+        <button type="submit">Search</button>
+    </form>
+
+    {% if results %}
+    <table>
+        <tr>
+            <th>Company Name</th>
+            <th>Buyer Name</th>
+            <th>Location</th>
+            <th>Contact</th>
+            <th>Crop</th>
+            <th>Price</th>
+            <th>Date</th>
+        </tr>
+
+        {% for row in results %}
+        <tr>
+            <td>{{ row.company_name }}</td>
+            <td>{{ row.name }}</td>
+            <td>{{ row.location }}</td>
+            <td>{{ row.contact_no }}</td>
+            <td>{{ row.crop_name }}</td>
+            <td>₹ {{ row.price }} per 100 kg</td>
+            <td>{{ row.updated_at }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    {% else %}
+        <p class="no-result">No crop prices found.</p>
+    {% endif %}
+
+    <!-- Logout Button -->
+   <div class="logout-container">
+    <a href="/farmer_dashboard" class="logout-btn">Back</a>
+</div>
+</div>
+
+</body>
+</html>

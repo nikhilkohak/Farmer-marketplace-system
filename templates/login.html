@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>login page</title>
+    <style>
+      * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin-top: -80px;
+ background: url("{{ url_for('static', filename='img1.avif') }}")
+              no-repeat center center/cover;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #333;
+}
+.container {
+  width: 450px;      /* increase width */
+  max-width: 90%;
+  height: 700px;
+  margin-top: 180px;
+}
+
+.image-container {
+  width: 100%;
+  height: 400px;
+   /* Replace with your image path */
+  
+  
+}
+
+
+
+.left, .right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px;
+}
+
+.left {
+  background: rgba(255, 255, 255, 0.2);  /* transparent white */
+  backdrop-filter: blur(10px);           /* blur effect */
+  -webkit-backdrop-filter: blur(10px);
+        /* Prevents tiling */
+}
+
+.left h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+.google-logo {
+    font-size: 30px;
+    font-weight: bold;
+    background: conic-gradient(
+        red 0deg 60deg,
+        blue 60deg 150deg,
+        green 150deg 250deg,
+        orange 250deg 310deg,
+        red 310deg 360deg
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+ .apple-logo {
+  margin-top: 5px;
+      width: 25px;
+      fill: #000; /* Change to white (#fff) or any color */
+      transition: fill 0.3s;
+    }
+
+    .apple-logo:hover {
+      fill: #aaa;
+    }
+      .facebook-logo {
+      width: 17px;
+      fill: #0b3b7a; /* Facebook blue */
+      transition: fill 0.3s;
+    }
+
+    .facebook-logo:hover {
+      fill: #145dbf;
+    }
+
+.left p {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 30px;
+  font-size: 14px;
+}
+
+.forgot {
+  text-align: right;
+  font-size: 12px;
+  margin-bottom: 20px;
+  color: #888;
+  text-decoration: none;
+}
+
+button[type="submit"] {
+  padding: 12px;
+  background-color: #000;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.divider {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 14px;
+  color: #888;
+}
+
+.social-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.social {
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 16px;
+  background-color: #eee;
+  cursor: pointer;
+}
+
+.register {
+  font-size: 14px;
+  text-align: center;
+}
+
+.register a {
+  color: green;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+    </style>
+  </head>
+  <body>
+     <div class="container">
+    <div class="left">
+      <h1>Welcome back!</h1>
+      <br><br>
+
+<form method="POST" action="/login" autocomplete="off">
+  <input type="email" name="email" placeholder="Email" required /><br>
+  <input type="password" name="password" placeholder="Password" required />
+
+  <a href="#" class="forgot" style="color: #000;">Forgot Password?</a>
+  <button type="submit">Login</button>
+  <br>
+</form>
+
+<p class="register">
+  <b>Not a member? </b><a href="/register">Register now</a>
+</p>
+
+      <div class="divider" style="color: #000;">or continue with</div>
+      <div class="social-buttons">
+
+
+        <button class="social g"><span class="google-logo"><a href="#"style="text-decoration: none;color: inherit;">G</a></span></button>
+
+
+
+        <button class="social a">  <svg class="apple-logo" viewBox="0 0 384 512" xmlns="http://www.w3.org/2000/svg">
+<a href="#">
+    <path d="M318.7 268.6c-.2-43.7 19.2-76.8 60.4-101.2-22.5-32.8-56.1-51.3-103-55.4-43.2-3.8-89.6 25.5-105.7 25.5-16.4 0-55.3-24.4-85.7-24.4C34.3 113.1 0 153 0 209.5c0 35.4 13.2 72.8 39.6 111.3 33.1 48.4 61.1 86.3 109.8 84.6 21.8-.7 37.6-15.3 65.2-15.3 27.4 0 41.7 15.3 65.7 15 49.4-.8 74.4-49 106.7-97.4-66.4-31.6-62.7-92.9-67.3-139.1zM259.4 91c32.3-39.1 28.7-75.6 27.9-83.6-26.7 1.5-57.5 18-75.9 39.9-17.7 20.8-33.1 54.5-28.9 86.5 30.7 2.3 57.2-14.4 76.9-42.8z"/>
+</a></svg>
+        </button>
+
+
+        <button class="social f">
+          <svg class="facebook-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+            <a href="#">
+    <path d="M279.14 288l14.22-92.66h-88.91V127.53c0-25.35 12.42-50.06 52.24-50.06H293V6.26S259.5 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"/>
+            </a> </svg>
+        </button>
+      </div>
+
+
+     
+    </div>
+
+  
+  </div>
+</body>
+</html>
