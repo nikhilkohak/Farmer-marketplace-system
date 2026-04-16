@@ -740,6 +740,7 @@ def give_order(user_id, crop_id):
         crop_id=crop_id
     )
 
+# ================= forgot password  =================
 
 @app.route("/forgot_password", methods=["GET", "POST"])
 def forgot_password():
@@ -764,10 +765,11 @@ def forgot_password():
             return redirect(url_for("reset_password", email=email, table="buyers"))
 
         else:
-            return "Email not found"
+            return render_template("forgot_password.html", error="Invalid Email")
 
     return render_template("forgot_password.html")
-
+    
+# ================= Reset password  =================
 
 @app.route("/reset_password", methods=["GET", "POST"])
 def reset_password():
